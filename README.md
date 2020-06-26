@@ -3,5 +3,4 @@ AnPhotoResizers write content form source image into all images under target fol
 
 
 Download:
-https://github.com/MingJieHan/AnPhotoResizers/raw/master/Download/AnPhotoResizers_1.0.zip
-
+https://github.com/MingJieHan/AnPhotoResizers/releases/download/1.0/AnPhotoResizers.app.zip
