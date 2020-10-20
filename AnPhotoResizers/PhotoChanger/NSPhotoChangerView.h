@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSPhotoChangerView : NSView
-
++(BOOL)writeImage:(NSImage *)image into:(NSURL *)url sourceSize:(CGSize)sourceSize;
++ (NSImage *)imageWithImage:(NSImage *)originalImage scaledToSize:(CGSize)desiredSize;
 @end
 
 NS_ASSUME_NONNULL_END

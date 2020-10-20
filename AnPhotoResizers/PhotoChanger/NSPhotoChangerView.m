@@ -103,13 +103,29 @@
         path_cell.URL = [NSURL fileURLWithPath:str];
     }
 }
++(BOOL)writeImage:(NSImage *)image into:(NSURL *)url sourceSize:(CGSize)sourceSize{
+    NSBitmapImageRep *savedImageBitmapRep = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentationUsingCompression:NSTIFFCompressionNone factor:1.0]];
 
-- (NSImage *)imageWithImage:(NSImage *)originalImage scaledToSize:(CGSize)desiredSize {
+    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSNumber numberWithFloat:1.0], kCGImageDestinationLossyCompressionQuality,
+                                [NSNumber numberWithInteger:72], kCGImagePropertyDPIHeight,
+                                [NSNumber numberWithInteger:72], kCGImagePropertyDPIWidth,
+                                [NSNumber numberWithInteger:sourceSize.height],kCGImagePropertyPixelHeight,
+                                [NSNumber numberWithInteger:sourceSize.width],kCGImagePropertyPixelWidth,
+                                nil];
+
+    NSMutableData *imageData = [[NSMutableData alloc] init];
+    CGImageDestinationRef imageDest =  CGImageDestinationCreateWithData((CFMutableDataRef)imageData, kUTTypePNG, 1, NULL);
+    CGImageDestinationAddImage(imageDest, [savedImageBitmapRep CGImage], (CFDictionaryRef)properties);
+    CGImageDestinationFinalize(imageDest);
+    return [imageData writeToURL:url atomically:YES];
+}
+
++ (NSImage *)imageWithImage:(NSImage *)originalImage scaledToSize:(CGSize)desiredSize {
     NSImage *newImage = [[NSImage alloc] initWithSize:CGSizeMake(desiredSize.width/2.f, desiredSize.height/2.f)];
     [newImage lockFocus];
     [originalImage drawInRect:NSMakeRect(0, 0, desiredSize.width/2.f, desiredSize.height/2.f) fromRect:NSMakeRect(0, 0, originalImage.size.width, originalImage.size.height) operation:NSCompositingOperationSourceOver fraction:1.f];
     [newImage unlockFocus];
-//    newImage.size = CGSizeMake(desiredSize.width/2.f, desiredSize.height/2.f);
     return newImage;
 }
 
@@ -147,26 +163,10 @@
     for (NSURL *url in result){
         NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
         if (image){
-            NSImage *out_image = [self imageWithImage:source_image scaledToSize:image.size];
+            NSImage *out_image = [NSPhotoChangerView imageWithImage:source_image scaledToSize:image.size];
             if (out_image){
                 numOfConvert ++;
-
-                NSBitmapImageRep *savedImageBitmapRep = [NSBitmapImageRep imageRepWithData:[out_image TIFFRepresentationUsingCompression:NSTIFFCompressionNone factor:1.0]];
-
-                NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                            [NSNumber numberWithFloat:1.0], kCGImageDestinationLossyCompressionQuality,
-                                            [NSNumber numberWithInteger:72], kCGImagePropertyDPIHeight,
-                                            [NSNumber numberWithInteger:72], kCGImagePropertyDPIWidth,
-                                            [NSNumber numberWithInteger:source_image.size.height],kCGImagePropertyPixelHeight,
-                                            [NSNumber numberWithInteger:source_image.size.width],kCGImagePropertyPixelWidth,
-                                            nil];
-
-                NSMutableData *imageData = [[NSMutableData alloc] init];
-                CGImageDestinationRef imageDest =  CGImageDestinationCreateWithData((CFMutableDataRef)imageData, kUTTypePNG, 1, NULL);
-                CGImageDestinationAddImage(imageDest, [savedImageBitmapRep CGImage], (CFDictionaryRef)properties);
-                CGImageDestinationFinalize(imageDest);
-                
-                [imageData writeToURL:url atomically:YES];
+                [NSPhotoChangerView writeImage:out_image into:url sourceSize:source_image.size];
             }
         }
     }

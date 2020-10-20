@@ -13,6 +13,7 @@
 		EE0FDDDA24A45462007A7AF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FDDD824A45462007A7AF1 /* Main.storyboard */; };
 		EE0FDDDD24A45462007A7AF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0FDDDC24A45462007A7AF1 /* main.m */; };
 		EE0FDDE624A45611007A7AF1 /* NSPhotoChangerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0FDDE524A45611007A7AF1 /* NSPhotoChangerView.m */; };
+		EEE39B48253EA41F00B8B9BC /* NSDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE39B47253EA41F00B8B9BC /* NSDropView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		EE0FDDDE24A45462007A7AF1 /* PhotoChanger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhotoChanger.entitlements; sourceTree = "<group>"; };
 		EE0FDDE424A45611007A7AF1 /* NSPhotoChangerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSPhotoChangerView.h; sourceTree = "<group>"; };
 		EE0FDDE524A45611007A7AF1 /* NSPhotoChangerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSPhotoChangerView.m; sourceTree = "<group>"; };
+		EEE39B46253EA41F00B8B9BC /* NSDropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDropView.h; sourceTree = "<group>"; };
+		EEE39B47253EA41F00B8B9BC /* NSDropView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDropView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 				EE0FDDD424A45461007A7AF1 /* ViewController.m */,
 				EE0FDDE424A45611007A7AF1 /* NSPhotoChangerView.h */,
 				EE0FDDE524A45611007A7AF1 /* NSPhotoChangerView.m */,
+				EEE39B46253EA41F00B8B9BC /* NSDropView.h */,
+				EEE39B47253EA41F00B8B9BC /* NSDropView.m */,
 				EE0FDDD624A45462007A7AF1 /* Assets.xcassets */,
 				EE0FDDD824A45462007A7AF1 /* Main.storyboard */,
 				EE0FDDDB24A45462007A7AF1 /* Info.plist */,
@@ -101,7 +106,7 @@
 		EE0FDDC524A45461007A7AF1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "MingJie Han";
 				TargetAttributes = {
 					EE0FDDCC24A45461007A7AF1 = {
@@ -148,6 +153,7 @@
 				EE0FDDE624A45611007A7AF1 /* NSPhotoChangerView.m in Sources */,
 				EE0FDDDD24A45462007A7AF1 /* main.m in Sources */,
 				EE0FDDD224A45461007A7AF1 /* AppDelegate.m in Sources */,
+				EEE39B48253EA41F00B8B9BC /* NSDropView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +197,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -249,6 +256,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -279,6 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PhotoChanger/PhotoChanger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3KM9DQ5C6Z;
@@ -299,6 +308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PhotoChanger/PhotoChanger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3KM9DQ5C6Z;
