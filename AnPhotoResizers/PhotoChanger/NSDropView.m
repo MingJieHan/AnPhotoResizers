@@ -52,7 +52,7 @@
         if ([[str.pathExtension uppercaseString] isEqualToString:@"PNG"]){
             NSImage *image = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:str]];
             
-            NSImage *x2Image = [NSPhotoChangerView imageWithImage:image scaledToSize:CGSizeMake(image.size.width * 0.667, image.size.height * 0.667)];
+            NSImage *x2Image = [NSPhotoChangerView imageWithImage:image scaledToSize:CGSizeMake(2.f * image.size.width/3.f, 2.f * image.size.height/3.f)];
             NSString *name = [[str lastPathComponent] stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"];
             NSString *targetFile = [NSHomeDirectory() stringByAppendingFormat:@"/Downloads/%@",name];
             NSURL *x2ImageURL = [[NSURL alloc] initFileURLWithPath:targetFile];
@@ -63,7 +63,7 @@
                 [urlsArray addObject:x2ImageURL];
             }
             
-            NSImage *x1Image = [NSPhotoChangerView imageWithImage:image scaledToSize:CGSizeMake(image.size.width * 0.333, image.size.height * 0.333)];
+            NSImage *x1Image = [NSPhotoChangerView imageWithImage:image scaledToSize:CGSizeMake(image.size.width/3.f, image.size.height/3.f)];
             name = [[str lastPathComponent] stringByReplacingOccurrencesOfString:@"@3x" withString:@""];
             targetFile = [NSHomeDirectory() stringByAppendingFormat:@"/Downloads/%@",name];
             NSURL *x1ImageURL = [[NSURL alloc] initFileURLWithPath:targetFile];
